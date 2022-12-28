@@ -74,30 +74,20 @@ const App = () => {
           I am a high school student with a strong interest in computer science
           and have been working in the field for about 4 years now, focusing on
           full stack web development and programming.
-          <a href="#about" onClick={() => setmoreInfo(!moreInfo)}>
-            {!moreInfo ? "more" : "less"}
-          </a>
-          <SlideDown className="about_animate">
-            {moreInfo && (
-              <>
-                <br />
-                <br />I thrive on the challenge of competing in programming
-                competitions and tackling projects that test my problem-solving
-                abilities, often incorporating my love of physics and
-                mathematics into my work.
-                <br />
-                <br />
-                Recently, I have been exploring the field of machine learning,
-                with a focus on supervised learning and also experimenting with
-                3d rendering.
-                <br /> <br />I also enjoy dabbling in 3D modeling and
-                speedcubing in my free time.
-                {/* <br /> <br /> <br />
+          <br />
+          <br />I thrive on the challenge of competing in programming
+          competitions and tackling projects that test my problem-solving
+          abilities, often incorporating my love of physics and mathematics into
+          my work.
+          <br />
+          <br />
+          Recently, I have been exploring the field of machine learning, with a
+          focus on supervised learning and also experimenting with 3d rendering.
+          <br /> <br />I also enjoy dabbling in 3D modeling and speedcubing in
+          my free time.
+          {/* <br /> <br /> <br />
         Thank you for visiting my website and I hope you find the content here
         interesting and informative. */}
-              </>
-            )}
-          </SlideDown>
         </h2>
         <h1 className="title-text">Projects</h1>
 
