@@ -1,29 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@300&display=swap");
 .app {
-  position: fixed;
-  margin-left: 25%;
+  box-sizing: border-box;
+  margin-left: 20%;
   padding: 2%;
-  /* height: 100%; */
+
   margin-right: 20%;
-  color: rgb(201, 206, 217);
-  background-color: rgb(0, 0, 0, 0.5);
-  width: 50%;
+
+  /* background-color: rgb(0, 0, 0, 0.5); */
+  width: 60%;
 }
-@font-face {
-  font-family: "CyberPunk";
-  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/133207/moderna_-webfont.eot");
+
+.title-container {
+  display: flex;
 }
+/* .page-title {
+  font-size: 10rem;
+  -webkit-text-stroke: 1px rgb(201, 206, 217);
+  -webkit-text-fill-color: transparent;
+  font-family: "Saira Semi Condensed", sans-serif;
+  font-weight: 300;
+  margin-top: -4%;
+  margin-left: 2%;
+} */
 
 .glitch {
   font-size: 5rem;
-  /* font-weight: 700; */
+  font-weight: 700;
   /* text-transform: uppercase; */
   position: relative;
-
+  font-family: "Roboto";
   text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
     -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
     0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
-
-  /* animation: glitch 500ms infinite; */
 }
 
 .glitch span {
@@ -82,4 +90,111 @@
       -0.025em -0.025em 0 rgba(0, 255, 0, 0.75),
       -0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
   }
+}
+.about {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  font-weight: 400;
+  transition: all 0.3s ease-in-out;
+}
+.about a {
+  color: lightblue;
+  font-size: 1rem;
+  text-decoration: none;
+}
+.about_animate {
+  margin-top: -3.5%;
+}
+.title-text {
+  font-size: 3.9rem;
+  text-align: center;
+}
+
+.title-text-contact {
+  font-size: 3.9rem;
+  text-align: right;
+}
+
+.contact-item {
+  font-size: 2rem;
+  cursor: pointer;
+  text-align: right;
+  margin-bottom: 2%;
+  color: rgb(201, 206, 217);
+}
+.contact-item a {
+  text-decoration: none;
+}
+.contact-item p {
+  font-size: 1rem;
+}
+
+.project-title {
+  font-size: 5rem;
+  letter-spacing: 3px;
+  -webkit-text-stroke: 1px rgb(201, 206, 217);
+  -webkit-text-fill-color: transparent;
+  font-family: "Saira Semi Condensed", sans-serif;
+  font-weight: 100;
+}
+.project h1 {
+  cursor: pointer;
+}
+.project-img {
+  display: none;
+  position: absolute;
+  width: 30%;
+}
+
+.project-info img {
+  width: 100%;
+}
+.project-info-text {
+  display: flex;
+}
+
+.project-info-text p {
+  width: 50%;
+}
+
+.project-info-link {
+  color: lightblue;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .app {
+    margin-left: 5%;
+    padding: 2%;
+    margin-right: 5%;
+    width: 90%;
+  }
+  .project h1 {
+    font-size: 2.4rem;
+  }
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: rgb(201, 206, 217);
+}
+
+.hover-underline-animation:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(201, 206, 217);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
