@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SlideDown } from "react-slidedown";
 import "react-slidedown/lib/slidedown.css";
-import { Gameoflife, Skillstrainer } from "./projects";
+import { Gameoflife, Skillstrainer, DebateHouse } from "./projects";
 // import "./Components/Background";
 
 const App = () => {
@@ -40,6 +40,18 @@ const App = () => {
           time: "Nov 2021 - May 2022",
           description: `Worked a junior developer at Skillstrainer, I was able to gain valuable hands-on experience working on the company's flagship learning management system. I had the opportunity to collaborate with a team of talented engineers, and together we were able to ship code that could handle scale and was being used by over 1 million users. This was a challenging but rewarding experience, as I was able to develop my skills in problem-solving and efficient code development. I also had the chance to work in a high growth startup environment, which allowed me to learn about the unique challenges and opportunities that come with working in a fast-paced, rapidly evolving company. Overall, my time at Skillstrainer was a great learning experience that helped me to grow both personally and professionally.`,
           link: "https://www.skillstrainer.in",
+        },
+      ],
+    },
+    {
+      title: "DebateHouse",
+      img: DebateHouse,
+      info: [
+        {
+          description:
+            "Debatehouse provides a platform for organized discussions on various topics. The goal is to allow people to consider multiple perspectives on a topic and come to a resolution through discussion. After the discussion is over, a summary of the debate is made available in the debate feed for others to learn from. The aim is to provide a larger perspective on the issue made available by the thoughtful discussion.",
+          time: 2021,
+          link: "https://www.youtube.com/watch?v=jXEDxppCj1g&ab_channel=AkshatSinghania",
         },
       ],
     },
@@ -144,49 +156,35 @@ const App = () => {
           </div>
         ))}
         <h1 className="title-text-contact">Contact Me</h1>
-
-        <div className="contact-item">
-          <a
-            href="mailto:singhaniaakshat1@gmail.com"
-            target="_blank"
-            className=" hover-underline-animation"
-            rel="noopener noreferrer"
-          >
-            EMAIL
-          </a>
-          <p>singhaniaakshat1@gmail.com</p>
-        </div>
-        <div className="contact-item">
-          <a
-            href="https://www.linkedin.com/in/akshat-singhania-2702781b4"
-            className="hover-underline-animation"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LINKEDIN
-          </a>
-        </div>
-        <div className="contact-item">
-          <a
-            href="https://dev.to/akshatsinghania"
-            className="hover-underline-animation"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            DEV.TO
-          </a>
-        </div>
-        <div className="contact-item">
-          <a
-            href="https://dev.to/akshatsinghania"
-            className="hover-underline-animation"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            DISCORD
-          </a>
-          <p>Akshat#7161</p>
-        </div>
+        {[
+          {
+            name: "EMAIL",
+            info: "singhaniaakshat1@gmail.com",
+            link: "mailto:singhaniaakshat1@gmail.com",
+          },
+          {
+            name: "LINKEDIN",
+            link: "https://www.linkedin.com/in/akshat-singhania-2702781b4",
+          },
+          { name: "DEV.TO", link: "https://dev.to/akshatsinghania" },
+          {
+            name: "DISCORD",
+            link: "https://dev.to/akshatsinghania",
+            info: "Akshat#7161",
+          },
+        ].map((v) => (
+          <div className="contact-item">
+            <a
+              href={v.link}
+              target="_blank"
+              className=" hover-underline-animation"
+              rel="noopener noreferrer"
+            >
+              {v.name}
+            </a>
+            {v.info && <p>{v.info}</p>}
+          </div>
+        ))}
       </div>
     </div>
   );
