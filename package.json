@@ -10,6 +10,7 @@
     "@types/three": "^0.146.0",
     "ambient-cbg": "^1.0.4",
     "ambient-cbg-ts": "^1.0.6",
+    "mathjs": "^12.2.0",
     "react": "^18.2.0",
     "react-ambient-canvas-backgrounds": "^1.2.3",
     "react-dom": "^18.2.0",

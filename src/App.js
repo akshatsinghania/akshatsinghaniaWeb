@@ -3,6 +3,9 @@ import { SlideDown } from "react-slidedown";
 import "react-slidedown/lib/slidedown.css";
 import { Gameoflife, Skillstrainer, DebateHouse } from "./projects";
 // import "./Components/Background";
+import JuliaSetVisualizer from "./JuliaSetVisualizer";
+import { RiArrowDropDownLine } from "react-icons/ri";
+import { RiArrowDropUpLine } from "react-icons/ri";
 
 const App = () => {
   const [moreInfo, setmoreInfo] = useState(false);
@@ -12,21 +15,6 @@ const App = () => {
   };
 
   const [projects, setProjects] = useState([
-    {
-      title: "Game Of Life",
-      img: Gameoflife,
-      info: [
-        {
-          description: `A website that simulates the Conway's Game of Life, a
-    mathematical model that shows the evolution of a
-    population of cells according to predetermined rules.
-    Users can set up the initial configuration of cells on a
-    grid and watch as the cells interact and evolve.`,
-          time: 2022,
-          link: `https://conwayss-game-of-life.web.app`,
-        },
-      ],
-    },
     {
       title: "Skillstrainer",
       img: Skillstrainer,
@@ -55,6 +43,21 @@ const App = () => {
         },
       ],
     },
+    {
+      title: "Game Of Life",
+      img: Gameoflife,
+      info: [
+        {
+          description: `A website that simulates the Conway's Game of Life, a
+    mathematical model that shows the evolution of a
+    population of cells according to predetermined rules.
+    Users can set up the initial configuration of cells on a
+    grid and watch as the cells interact and evolve.`,
+          time: 2022,
+          link: `https://conwayss-game-of-life.web.app`,
+        },
+      ],
+    },
   ]);
   const handleEnter = (index) => {
     var newprojects = projects;
@@ -73,7 +76,10 @@ const App = () => {
     setProjects(newprojects);
   };
   return (
-    <div onMouseMove={handleMouseMove}>
+    <div onMouseMove={handleMouseMove} className="index">
+      <div className="animation-container">
+        <JuliaSetVisualizer />
+      </div>
       <div className="app">
         <div id="container"></div>
         <h1 className="glitch">
@@ -83,9 +89,9 @@ const App = () => {
         </h1>
 
         <h2 className="about">
-          I am a high school student with a strong interest in computer science
-          and have been working in the field for about 4 years now, focusing on
-          full stack web development and programming.
+          I am a sophomore with a strong interest in computer science and have
+          been working in the field for about 4 years now, focusing on full
+          stack web development.
           <br />
           <br />I thrive on the challenge of competing in programming
           competitions and tackling projects that test my problem-solving
@@ -112,7 +118,14 @@ const App = () => {
               onClick={() => handleClick(index)}
             >
               {project.title}
+
+              {!project.expand ? (
+                <RiArrowDropDownLine className="title-text-arrow" />
+              ) : (
+                <RiArrowDropUpLine className="title-text-arrow" />
+              )}
             </h1>
+
             <img
               alt="A preview screenshot of the application/program/website"
               className="project-img"
@@ -169,7 +182,7 @@ const App = () => {
           { name: "DEV.TO", link: "https://dev.to/akshatsinghania" },
           {
             name: "DISCORD",
-            link: "https://dev.to/akshatsinghania",
+            link: "#",
             info: "Akshat#7161",
           },
         ].map((v) => (

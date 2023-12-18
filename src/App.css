@@ -1,10 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@300&display=swap");
+.index {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.animation-container {
+  flex: 1;
+  position: fixed;
+}
+
+.content-container {
+  flex: 1;
+
+  overflow: hidden;
+}
+
 .app {
   box-sizing: border-box;
-  margin-left: 20%;
+  /* margin-left: 50%; */
+  z-index: 10;
   padding: 2%;
 
-  margin-right: 20%;
+  margin-right: 45%;
 
   /* background-color: rgb(0, 0, 0, 0.5); */
   width: 60%;
@@ -28,12 +44,15 @@
   font-weight: 700;
   /* text-transform: uppercase; */
   position: relative;
-  font-family: "Roboto";
+  font-family: "Roboto" !important;
   text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
-    -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+    -0.025em -0.05em 0 rgba(137, 252, 137, 0.75),
     0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+  color: rgb(201, 206, 217);
 }
-
+.glitch * {
+  font-family: "Roboto" !important;
+}
 .glitch span {
   position: absolute;
   top: 0;
@@ -112,15 +131,19 @@
 
 .title-text-contact {
   font-size: 3.9rem;
+
   text-align: right;
+  margin-right: 5%;
 }
 
 .contact-item {
   font-size: 2rem;
   cursor: pointer;
   text-align: right;
+  margin-right: 5%;
   margin-bottom: 2%;
-  color: rgb(201, 206, 217);
+
+  /* color: rgb(201, 206, 217); */
 }
 .contact-item a {
   text-decoration: none;
@@ -130,12 +153,22 @@
 }
 
 .project-title {
-  font-size: 5rem;
+  font-size: 4rem;
+
   letter-spacing: 3px;
-  -webkit-text-stroke: 1px rgb(201, 206, 217);
+  font-weight: 100;
+  /* -webkit-text-stroke: 1px rgb(201, 206, 217); */
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
   -webkit-text-fill-color: transparent;
   font-family: "Saira Semi Condensed", sans-serif;
+
   font-weight: 100;
+}
+.title-text-arrow {
+  font-size: 5rem;
+  vertical-align: middle;
+  text-align: right;
+  /* margin-left: 10%; */
 }
 .project h1 {
   cursor: pointer;
@@ -178,7 +211,8 @@
 .hover-underline-animation {
   display: inline-block;
   position: relative;
-  color: rgb(201, 206, 217);
+  /* color: rgb(201, 206, 217); */
+  color: inherit;
 }
 
 .hover-underline-animation:after {
