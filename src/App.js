@@ -126,9 +126,9 @@ const App = () => {
         </h1>
 
         <h2 className="about">
-          I am a sophomore with a strong interest in computer science and have
-          been working in the field for about 4 years now, focusing on full
-          stack web development.
+          I am a 15 year old full stack engineer with a strong interest in
+          computer science and have been working in the field for about 4 years
+          now, focusing on building web apps.
           <br />
           <br />I thrive on the challenge of competing in programming
           competitions and tackling projects that test my problem-solving
