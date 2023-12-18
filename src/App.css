@@ -125,12 +125,12 @@
   margin-top: -3.5%;
 }
 .title-text {
-  font-size: 3.9rem;
+  /* font-size: 3.9rem; */
   text-align: center;
 }
 
 .title-text-contact {
-  font-size: 3.9rem;
+  /* font-size: 3.9rem; */
 
   text-align: right;
   margin-right: 5%;
@@ -153,7 +153,7 @@
 }
 
 .project-title {
-  font-size: 4rem;
+  font-size: 3rem;
 
   letter-spacing: 3px;
   font-weight: 100;
@@ -165,9 +165,9 @@
   font-weight: 100;
 }
 .title-text-arrow {
-  font-size: 5rem;
+  /* font-size: 5rem; */
   vertical-align: middle;
-  text-align: right;
+  /* text-align: right; */
   /* margin-left: 10%; */
 }
 .project h1 {

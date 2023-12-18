@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SlideDown } from "react-slidedown";
 import "react-slidedown/lib/slidedown.css";
 import { Gameoflife, Skillstrainer, DebateHouse } from "./projects";
@@ -6,6 +6,18 @@ import { Gameoflife, Skillstrainer, DebateHouse } from "./projects";
 import JuliaSetVisualizer from "./JuliaSetVisualizer";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { RiArrowDropUpLine } from "react-icons/ri";
+
+import {
+  convertTimestampToDate,
+  endsWithAny,
+  formatText,
+  generateWidthStyles,
+} from "./helper";
+import blog, { sortBlogPostsByDate } from "./blog";
+import { round } from "mathjs";
+const imageFileTypes = ["jpg", "jpeg", "png", "gif"];
+
+const audioFileTypes = ["mp3", "wav", "aiff", "m4a"];
 
 const App = () => {
   const [moreInfo, setmoreInfo] = useState(false);
@@ -31,33 +43,33 @@ const App = () => {
         },
       ],
     },
-    {
-      title: "DebateHouse",
-      img: DebateHouse,
-      info: [
-        {
-          description:
-            "Debatehouse provides a platform for organized discussions on various topics. The goal is to allow people to consider multiple perspectives on a topic and come to a resolution through discussion. After the discussion is over, a summary of the debate is made available in the debate feed for others to learn from. The aim is to provide a larger perspective on the issue made available by the thoughtful discussion.",
-          time: 2021,
-          link: "https://www.youtube.com/watch?v=jXEDxppCj1g&ab_channel=AkshatSinghania",
-        },
-      ],
-    },
-    {
-      title: "Game Of Life",
-      img: Gameoflife,
-      info: [
-        {
-          description: `A website that simulates the Conway's Game of Life, a
-    mathematical model that shows the evolution of a
-    population of cells according to predetermined rules.
-    Users can set up the initial configuration of cells on a
-    grid and watch as the cells interact and evolve.`,
-          time: 2022,
-          link: `https://conwayss-game-of-life.web.app`,
-        },
-      ],
-    },
+    // {
+    //   title: "DebateHouse",
+    //   img: DebateHouse,
+    //   info: [
+    //     {
+    //       description:
+    //         "Debatehouse provides a platform for organized discussions on various topics. The goal is to allow people to consider multiple perspectives on a topic and come to a resolution through discussion. After the discussion is over, a summary of the debate is made available in the debate feed for others to learn from. The aim is to provide a larger perspective on the issue made available by the thoughtful discussion.",
+    //       time: 2021,
+    //       link: "https://www.youtube.com/watch?v=jXEDxppCj1g&ab_channel=AkshatSinghania",
+    //     },
+    //   ],
+    // },
+    // {
+    //   title: "Game Of Life",
+    //   img: Gameoflife,
+    //   info: [
+    //     {
+    //       description: `A website that simulates the Conway's Game of Life, a
+    // mathematical model that shows the evolution of a
+    // population of cells according to predetermined rules.
+    // Users can set up the initial configuration of cells on a
+    // grid and watch as the cells interact and evolve.`,
+    //       time: 2022,
+    //       link: `https://conwayss-game-of-life.web.app`,
+    //     },
+    //   ],
+    // },
   ]);
   const handleEnter = (index) => {
     var newprojects = projects;
@@ -75,6 +87,31 @@ const App = () => {
     else newprojects[index].expand = true;
     setProjects(newprojects);
   };
+
+  const [userData, setUserData] = useState(blog.posts);
+  useEffect(() => {
+    setUserData(sortBlogPostsByDate(blog.posts));
+  }, [blog]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         "https://scrapbook.hackclub.com/api/users/akshatsinghania"
+  //       );
+  //       if (!response.ok) {
+  //         throw new Error("Network response was not ok");
+  //       }
+
+  //       const data = await response.json();
+  //       console.log(data);
+  //       setUserData([...data.posts]);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error.message);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
   return (
     <div onMouseMove={handleMouseMove} className="index">
       <div className="animation-container">
@@ -83,9 +120,9 @@ const App = () => {
       <div className="app">
         <div id="container"></div>
         <h1 className="glitch">
-          <span>Hey I'm Akshat</span>
-          Hey I'm Akshat
-          <span>Hey I'm Akshat</span>
+          <span>AKshat Singhania</span>
+          AKshat Singhania
+          <span>AKshat Singhania</span>
         </h1>
 
         <h2 className="about">
@@ -107,7 +144,7 @@ const App = () => {
         Thank you for visiting my website and I hope you find the content here
         interesting and informative. */}
         </h2>
-        <h1 className="title-text">Projects</h1>
+        <h1 className="title-text">Cool stuff i worked on</h1>
 
         {projects.map((project, index) => (
           <div className="project" key={project.title}>
@@ -168,7 +205,7 @@ const App = () => {
             </SlideDown>
           </div>
         ))}
-        <h1 className="title-text-contact">Contact Me</h1>
+        {/* <h1 className="title-text-contact">Contact Me</h1> */}
         {[
           {
             name: "EMAIL",
@@ -198,9 +235,83 @@ const App = () => {
             {v.info && <p>{v.info}</p>}
           </div>
         ))}
+        {/* <h1 className="title-text">Blog</h1> */}
+        <RecentBlogSection items={userData} amount={1000} />
       </div>
     </div>
   );
 };
 
 export default App;
+// RecentBlogSection.js
+
+const RecentBlogSection = ({ items, amount, handleClick }) => {
+  return (
+    <section style={{ marginTop: "36px" }}>
+      <p>Here's what I've been up to recently</p>
+      {items.slice(0, amount).map((item) => (
+        <div key={item?.id}>
+          <p>
+            <b>{convertTimestampToDate(item?.postedAt)}</b>
+          </p>
+          <p dangerouslySetInnerHTML={{ __html: formatText(item?.text) }} />
+          <p className="attachments">
+            {item?.attachments
+              .filter((a) => endsWithAny(imageFileTypes, a))
+              .map((attachment) => {
+                console.log(attachment);
+                return (
+                  <img
+                    key={attachment}
+                    className="post-image"
+                    src={attachment}
+                    style={{ maxHeight: "50vh", borderRadius: "1%" }}
+                    loading="lazy"
+                    alt=""
+                  />
+                );
+              })}
+            {item?.attachments
+              .filter((a) => endsWithAny(audioFileTypes, a))
+              .map((attachment) => (
+                <audio
+                  key={attachment}
+                  src={attachment}
+                  controls
+                  preload="metadata"
+                />
+              ))}
+            {item?.mux.map((attachment) => (
+              <Video
+                key={attachment}
+                mux={attachment}
+                style={{ maxHeight: "50vh", borderRadius: "1%" }}
+              />
+            ))}
+          </p>
+          <hr />
+        </div>
+      ))}
+      You seem to have reached the end...
+      {amount < items.length ? (
+        <span className="load-more" onClick={handleClick}>
+          show more
+        </span>
+      ) : (
+        "have a great day :D"
+      )}
+    </section>
+  );
+};
+const Video = ({ mux }) => {
+  return (
+    <video width="100%" controls>
+      <source
+        src={mux}
+        type="video/mp4"
+        style={{ maxHeight: "50vh", borderRadius: "1%" }}
+      />
+      Your browser does not support the video tag.
+    </video>
+  );
+};
