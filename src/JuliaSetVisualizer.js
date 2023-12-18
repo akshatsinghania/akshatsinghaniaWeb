@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import * as math from "mathjs";
 
 const JuliaSetVisualizer = () => {
-  const MAX_ITERATIONS = 8;
+  const MAX_ITERATIONS = 30;
   const INITIAL_CONSTANT = [-0.99, 0.3];
   const TEMP_SIZE = 350;
 
@@ -83,6 +83,7 @@ const JuliaSetVisualizer = () => {
     const handlePointerMove = (event) => {
       mouseX = event.clientX - document.body.offsetLeft;
       mouseY = event.clientY - document.body.offsetTop;
+      console.log(mouseX, mouseY);
       mouseX = lerp(mouseX, [0, size], [0, TEMP_SIZE]);
       mouseY = lerp(mouseY, [0, size], [0, TEMP_SIZE]);
       constant = pixelToPoint(mouseX, mouseY);
